@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Ejemplo de Mapas!!!!</title>
+
+
+<style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 20 }
+      #mapa_div { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKyDSh7etnOU8mdIEtPaWPo6KSvK7nY2w&sensor=TRUE">
+    </script>
+  </head>
+  <body onload="inicializar_mapa()">
+    <div id="mapa_div" style="width:100%; height:100%"></div>
+  </body>
+
+  <script type="text/javascript">
+    function inicializar_mapa() {
+      var divMapa = document.getElementById('mapa_div');
+      // obtener ubicaion actual
+      //navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+      //function fn_mal(){alert("No se pudo obtener la direccion actual")}
+      //function fn_ok(rta ){
+          var lat = -0.316181;//rta.coords.latitude;
+          var lon = -78.458683;//rta.coords.longitude;
+
+
+///// p1
+          var gLatLon = new  google.maps.LatLng (lat , lon);
+           var objConfig = {
+               zoom   :17,
+               center: gLatLon
+           }
+           var gMapa = new google.maps.Map( divMapa , objConfig );
+
+           var objConfigMaker = {
+               position:gLatLon,
+               map: gMapa,
+               title: "P1"
+           }
+
+          var gMarker = new google.maps.Marker(objConfigMaker);
+        //  var gCoder = new google.maps.Geocoder();
+          
+          gMarker.setIcon('img/88332.png')
+
+          var objHTML = {
+                  content: '<div style="width:400px height:400"><p><img src="img/poste3.jpg" alt="Resultado de imagen para FOTO DE POSTE" width="222" height="165" /></p><table style="border-collapse: collapse; width: 100%;" border="1"><tbody><tr><td style="width: 50%;">CODIGO</td><td style="width: 50%;">as45-456-ffa</td></tr><tr><td style="width: 50%;">Ubicacion</td><td style="width: 50%;">Pichincha</td></tr><tr><td style="width: 50%;">Detalle</td><td style="width: 50%;"><p>2 Tuercas</p><p>3 Aislantes</p><p>4 Pernos</p></td></tr><tr><td style="width: 50%;">Da&ntilde;o</td><td style="width: 50%;"><p>Aislante roto</p><p>Turca oxidada</p></td></tr></tbody></table></div>'
+                      }
+          var gIW = new google.maps.InfoWindow(objHTML);
+          google.maps.event.addListener (gMarker, 'click', function(){gIW.open(gMapa,gMarker)})
+
+///// p2
+var gLatLon2 = new  google.maps.LatLng (lat+0.001 , lon+0.001);
+
+var objConfigMaker2 = {
+               position:gLatLon2,
+               map: gMapa,
+               title: "P2"
+           }
+
+          var gMarker2 = new google.maps.Marker(objConfigMaker2);
+        //  var gCoder = new google.maps.Geocoder();
+          
+          gMarker2.setIcon('img/88331.png')
+          var objHTML = {
+                  content: '<div style="width:400px height:400"><p><img src="img/poste2.jpg" alt="Resultado de imagen para FOTO DE POSTE" width="222" height="165" /></p><table style="border-collapse: collapse; width: 100%;" border="1"><tbody><tr><td style="width: 50%;">CODIGO</td><td style="width: 50%;">4s45-456-55a</td></tr><tr><td style="width: 50%;">Ubicacion</td><td style="width: 50%;">Pichincha</td></tr><tr><td style="width: 50%;">Detalle</td><td style="width: 50%;"><p>2 Tuercas</p><p>3 Aislantes</p><p>4 Pernos</p></td></tr><tr><td style="width: 50%;">Da&ntilde;o</td><td style="width: 50%;"><p></p><p></p></td></tr></tbody></table></div>'
+                      }
+          var gIW2 = new google.maps.InfoWindow(objHTML);
+          google.maps.event.addListener (gMarker2, 'click', function(){gIW2.open(gMapa,gMarker2)})
+
+//////
+
+///// p3
+var gLatLon3 = new  google.maps.LatLng (lat-0.001 , lon+0.000);
+
+           var objConfigMaker3 = {
+               position:gLatLon3,
+               map: gMapa,
+               title: "P3"
+           }
+
+          var gMarker3 = new google.maps.Marker(objConfigMaker3);
+        //  var gCoder = new google.maps.Geocoder();
+          
+          gMarker3.setIcon('img/88332.png')
+
+          var objHTML = {
+                  content: '<div style="width:400px height:400"><p><img src="img/poste1.jpg" alt="Resultado de imagen para FOTO DE POSTE" width="222" height="165" /></p><table style="border-collapse: collapse; width: 100%;" border="1"><tbody><tr><td style="width: 50%;">CODIGO</td><td style="width: 50%;">as45-456-ffa</td></tr><tr><td style="width: 50%;">Ubicacion</td><td style="width: 50%;">Pichincha</td></tr><tr><td style="width: 50%;">Detalle</td><td style="width: 50%;"><p>2 Tuercas</p><p>3 Aislantes</p><p>4 Pernos</p></td></tr><tr><td style="width: 50%;">Da&ntilde;o</td><td style="width: 50%;"><p>Aislante roto</p><p>Turca oxidada</p></td></tr></tbody></table></div>'
+                      }
+          var gIW3 = new google.maps.InfoWindow(objHTML);
+          google.maps.event.addListener (gMarker3, 'click', function(){gIW3.open(gMapa,gMarker3)})
+/////////////////////
+
+      }        
+function ponerPuntosMapa( vMapa , vTitle , vLat, vLon , vContent , vIcon  ){
+    var gLatLon3 = new  google.maps.LatLng (vLat, vLon);
+
+var objConfigMaker3 = {
+    position:gLatLon3,
+    map: vMapa,
+    title: vTitle
+}
+
+var gMarker3 = new google.maps.Marker(objConfigMaker3);
+//  var gCoder = new google.maps.Geocoder();
+
+gMarker3.setIcon(vIcon)
+
+var objHTML = {
+       content: vContent
+                  }
+var gIW3 = new google.maps.InfoWindow(objHTML);
+google.maps.event.addListener (gMarker3, 'click', function(){gIW3.open(vMapa,gMarker3)})
+
+
+}      
+      
+      
+    
+
+  </script>
+
+  </html>
